@@ -1,0 +1,19 @@
+<div id="main">
+  <h2>Chat Application</h2>
+
+  <!-- Dummy message we will be using this to create a new message -->
+  <p id="dummy_message"></p>
+
+  <div>
+    <div id="messages">
+      <% @messages.each do |i| %>
+        <p class="dummy_message"><%= i.body %></p>
+      <% end %>
+    </div>
+    <%= form_for @message, :html => { :id => "form_message" }, remote: true do |f| %>
+      <%# <%= f.label :body, 'Type a message' %>
+      <%= f.text_field :body, required: true, data: { message: true } %>
+      <%= f.submit ">", class: 'send_message' %>
+    <% end %>
+  </div>
+</div>
