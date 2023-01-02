@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     def create
         @message = Message.create(msg_params)
         if @message.save
+            # redirect_to "/"
             ActionCable.server.broadcast("chat_channel", { message: @message.body })
         else
             
